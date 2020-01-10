@@ -22,16 +22,17 @@ class RegisterUserViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         print("signIn button is pressed")
         
         //validate required field are not empty
         if (firstNameTextFeild.text?.isEmpty)! ||
             (lastNameTextFeild.text?.isEmpty)! ||
-            (passwordTextFeild.text?.isEmpty)! ||
-            (repeatPasswordTextFeild.text?.isEmpty)!
+            (emailAddressTextFeild.text?.isEmpty)! ||
+            (passwordTextFeild.text?.isEmpty)!
         {
-            
             //Display alert message and return
             displayMassage(userMessage: "All field are required")
             return
@@ -39,18 +40,15 @@ class RegisterUserViewController: UIViewController {
         
         
         //vaildate password
-        
-        if (passwordTextFeild.text?.elementsEqual(repeatPasswordTextFeild.text!) != true)
-
+        if (passwordTextFeild.text!.elementsEqual(repeatPasswordTextFeild.text!) != true)
         {
-            
             //Display alert message and return
-            displayMassage(userMessage: "All field are required")
+            displayMassage(userMessage: "Password is not matched")
             return
         }
         
         //Create Activity Indicator
-        let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         
         //position Activity Indicator in the center of the main view
         myActivityIndicator.center = view.center
@@ -67,16 +65,16 @@ class RegisterUserViewController: UIViewController {
         
         
         //send HTTP Request to Register user
-        let myURL = URL(string: "https://localhost:8080/api/users")
+        let myURL = URL(string: "http://localhost:8080/api/users")
         var request = URLRequest(url: myURL!)
         request.httpMethod = "POST"//Compose a query string
         request.addValue("application/json", forHTTPHeaderField: "content-type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        let postString = ["firstName": firstNameTextFeild.text!,
-                          "lastName":  lastNameTextFeild.text!,
-                          "userName":  emailAddressTextFeild.text!,
-                          "userPassword": passwordTextFeild.text!,
+        let postString = ["firstName":      firstNameTextFeild.text!,
+                          "lastName":       lastNameTextFeild.text!,
+                          "userName":       emailAddressTextFeild.text!,
+                          "userPassword":   passwordTextFeild.text!,
             ] as [String: String]
         
         
@@ -87,7 +85,9 @@ class RegisterUserViewController: UIViewController {
             displayMassage(userMessage: "something went wrong. Try again.")
             return
         }
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        
+        
+        let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
                 self.removeActivityIndicator(activityIndicator: myActivityIndicator)
 
             if error != nil{
@@ -115,7 +115,7 @@ class RegisterUserViewController: UIViewController {
             } catch {
                 print(error)
             }
-        }
+            }
         task.resume()
     }
     
