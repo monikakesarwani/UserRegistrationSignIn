@@ -4,14 +4,16 @@ import UIKit
 
 class RegisterUserViewController: UIViewController {
     
+    
+    //connect all the IBOutlet with RegisterUserViewController
     @IBOutlet weak var firstNameTextFeild: UITextField!
     @IBOutlet weak var lastNameTextFeild: UITextField!
     @IBOutlet weak var emailAddressTextFeild: UITextField!
     @IBOutlet weak var passwordTextFeild: UITextField!
     @IBOutlet weak var repeatPasswordTextFeild: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
     
@@ -19,6 +21,7 @@ class RegisterUserViewController: UIViewController {
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         print("cancel button is pressed")
         
+        //if user is tapped cancel button. exit from here and go to sign in page.
         dismiss(animated: true, completion: nil)
     }
     
@@ -33,7 +36,7 @@ class RegisterUserViewController: UIViewController {
             (emailAddressTextFeild.text?.isEmpty)! ||
             (passwordTextFeild.text?.isEmpty)!
         {
-            //Display alert message and return
+            //if required field is empty. Display alert message and return
             displayMassage(userMessage: "All field are required")
             return
         }
@@ -71,6 +74,7 @@ class RegisterUserViewController: UIViewController {
         request.addValue("application/json", forHTTPHeaderField: "content-type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
+        //posting the parameters:- That will be post string. these are going to be parameters that we are sending to web service as a JSON payload that will be eventually converted into a Json string so we are sign in first name and we are reading it from first name textfield and so on so forth.
         let postString = ["firstName":      firstNameTextFeild.text!,
                           "lastName":       lastNameTextFeild.text!,
                           "userName":       emailAddressTextFeild.text!,
@@ -79,6 +83,7 @@ class RegisterUserViewController: UIViewController {
         
         
         do{
+            //for that we are using jsonserialization and we are givng postString and converting into adjacent and setting content of http body
             request.httpBody = try JSONSerialization.data(withJSONObject: postString, options: .prettyPrinted)
         } catch let error{
             print(error.localizedDescription)
@@ -113,6 +118,8 @@ class RegisterUserViewController: UIViewController {
                     }
                 }
             } catch {
+                self.removeActivityIndicator(activityIndicator: myActivityIndicator)
+                self.displayMassage(userMessage: "Could not suessfully perfome this. Please try later.")
                 print(error)
             }
             }

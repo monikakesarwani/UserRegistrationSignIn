@@ -4,20 +4,20 @@ import UIKit
 import SwiftKeychainWrapper
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var fullNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-
+    
     @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
         
-    KeychainWrapper.standard.removeObject(forKey: "accessToken")
-    KeychainWrapper.standard.removeObject(forKey: "userId")
+        KeychainWrapper.standard.removeObject(forKey: "accessToken")
+        KeychainWrapper.standard.removeObject(forKey: "userId")
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let homePage = mainStoryboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
@@ -40,13 +40,36 @@ class HomeViewController: UIViewController {
         var request = URLRequest(url: myURL!)
         request.httpMethod = "GET" //Compose a query string
         request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Aurthorization")
-        let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+        let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
             if error != nil
             {
                 self.displayMassage(userMessage: "Could not suessfully perform this request. Please try later.")
             }
         }
-        /////////
+        do {
+            
+            let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+            
+            if let parseJSON = json {
+                
+                DispatchQueue.main.async {
+                    let firstName: String? = parseJSON["firstName"] as? String
+                    let lastName: String? = parseJSON["lastName"] as? String
+                    
+                    if firstName?.isEmpty != true && lastName?.isEmpty != true{
+                        self.fullNameLabel.text = firstName! + "" + lastName!
+                        
+                    }else{
+                        self.displayMassage(userMessage: "Could not successfully perform this reuest. Please try again later.")
+                    }
+                } 
+                
+            }
+        } catch{
+            
+            self.displayMassage(userMessage: "Could not suessfully perform. please try again later")
+            print("Error")
+        }
         
         task.resume()
     }
