@@ -61,11 +61,13 @@ class SignInViewController: UIViewController {
             request.httpBody = try JSONSerialization.data(withJSONObject: postString, options: .prettyPrinted)
         } catch let error{
             print(error.localizedDescription)
+            removeActivityIndicator(activityIndicator: myActivityIndicator)
             displayMassage(userMessage: "something went wrong. Try again.")
             return
         }
         
         let task = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            //we have remove activity indicator
             self.removeActivityIndicator(activityIndicator: myActivityIndicator)
             
             if error != nil{
