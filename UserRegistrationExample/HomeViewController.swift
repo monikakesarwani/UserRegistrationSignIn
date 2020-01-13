@@ -47,8 +47,8 @@ class HomeViewController: UIViewController {
             }
         }
         do {
-            
-            let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+            let data = try Data(contentsOf: myURL!)
+            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary
             
             if let parseJSON = json {
                 
