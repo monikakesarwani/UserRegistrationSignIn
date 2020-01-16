@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		043EDE3F23C83C20001D76F7 /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043EDE3E23C83C20001D76F7 /* functions.swift */; };
 		0489CC1223C572E50080A312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489CC1123C572E50080A312 /* AppDelegate.swift */; };
 		0489CC1423C572E50080A312 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489CC1323C572E50080A312 /* SceneDelegate.swift */; };
 		0489CC1623C572E50080A312 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489CC1523C572E50080A312 /* ViewController.swift */; };
@@ -17,12 +16,10 @@
 		0489CC2623C5867D0080A312 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489CC2523C5867D0080A312 /* SignInViewController.swift */; };
 		0489CC2823C588720080A312 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489CC2723C588720080A312 /* RegisterUserViewController.swift */; };
 		0489CC2A23C589C90080A312 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489CC2923C589C90080A312 /* HomeViewController.swift */; };
-		0489CC2D23C643BD0080A312 /* container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489CC2C23C643BD0080A312 /* container.swift */; };
 		18222A124C43B37752A051EC /* Pods_UserRegistrationExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7278FA0856942FA9AFC25369 /* Pods_UserRegistrationExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		043EDE3E23C83C20001D76F7 /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
 		0489CC0E23C572E50080A312 /* UserRegistrationExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserRegistrationExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0489CC1123C572E50080A312 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0489CC1323C572E50080A312 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,7 +31,6 @@
 		0489CC2523C5867D0080A312 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		0489CC2723C588720080A312 /* RegisterUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
 		0489CC2923C589C90080A312 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		0489CC2C23C643BD0080A312 /* container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = container.swift; sourceTree = "<group>"; };
 		7278FA0856942FA9AFC25369 /* Pods_UserRegistrationExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserRegistrationExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76EA55D4A2324C391F435DE1 /* Pods-UserRegistrationExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserRegistrationExample.debug.xcconfig"; path = "Target Support Files/Pods-UserRegistrationExample/Pods-UserRegistrationExample.debug.xcconfig"; sourceTree = "<group>"; };
 		B983113C8222803807329235 /* Pods-UserRegistrationExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserRegistrationExample.release.xcconfig"; path = "Target Support Files/Pods-UserRegistrationExample/Pods-UserRegistrationExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,9 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				0489CC2523C5867D0080A312 /* SignInViewController.swift */,
-				043EDE3E23C83C20001D76F7 /* functions.swift */,
 				0489CC2723C588720080A312 /* RegisterUserViewController.swift */,
-				0489CC2C23C643BD0080A312 /* container.swift */,
 				0489CC2923C589C90080A312 /* HomeViewController.swift */,
 				0489CC1123C572E50080A312 /* AppDelegate.swift */,
 				0489CC1323C572E50080A312 /* SceneDelegate.swift */,
@@ -95,7 +89,6 @@
 				76EA55D4A2324C391F435DE1 /* Pods-UserRegistrationExample.debug.xcconfig */,
 				B983113C8222803807329235 /* Pods-UserRegistrationExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -225,10 +218,8 @@
 				0489CC2823C588720080A312 /* RegisterUserViewController.swift in Sources */,
 				0489CC2623C5867D0080A312 /* SignInViewController.swift in Sources */,
 				0489CC1623C572E50080A312 /* ViewController.swift in Sources */,
-				043EDE3F23C83C20001D76F7 /* functions.swift in Sources */,
 				0489CC1223C572E50080A312 /* AppDelegate.swift in Sources */,
 				0489CC1423C572E50080A312 /* SceneDelegate.swift in Sources */,
-				0489CC2D23C643BD0080A312 /* container.swift in Sources */,
 				0489CC2A23C589C90080A312 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

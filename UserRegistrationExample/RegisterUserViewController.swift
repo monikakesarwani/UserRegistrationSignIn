@@ -71,6 +71,7 @@ class RegisterUserViewController: UIViewController {
         let myURL = URL(string: "http://localhost:8080/api/users")
         var request = URLRequest(url: myURL!)
         request.httpMethod = "POST"//Compose a query string
+        
         request.addValue("application/json", forHTTPHeaderField: "content-type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         

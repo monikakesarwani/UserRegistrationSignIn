@@ -9,6 +9,7 @@
 import UIKit
 import SwiftKeychainWrapper
 
+
 class SignInViewController: UIViewController {
     
     @IBOutlet weak var userNameTextFeild: UITextField!
@@ -50,6 +51,7 @@ class SignInViewController: UIViewController {
         let myURL = URL(string: "http://localhost:8080/api/users")
         var request = URLRequest(url: myURL!)
         request.httpMethod = "POST"//Compose a query string
+        
         request.addValue("application/json", forHTTPHeaderField: "content-type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
